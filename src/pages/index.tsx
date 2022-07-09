@@ -3,7 +3,6 @@ import {trpc} from "../utils/trpc";
 
 const Home: NextPage = () => {
     const hello = trpc.useQuery(["example.getAll"]);
-    console.log(hello, 'hihihi')
     return (
         <>
             <div className="pt-6 text-2xl text-blue-500 flex justify-center items-center w-full">
