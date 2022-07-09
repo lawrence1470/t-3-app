@@ -24,9 +24,7 @@ const MyApp: AppType = ({Component, pageProps}) => {
 
     // Check if the current route matches a public page
     const isPublicPage = publicPages.includes(pathname);
-
-    console.log(isPublicPage, '------')
-
+    
     return (
         <ClerkProvider {...pageProps} >
             {isPublicPage ? (
