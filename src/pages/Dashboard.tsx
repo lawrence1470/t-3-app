@@ -2,19 +2,22 @@
 import { useState, useEffect } from "react";
 import { useOrganization } from "@clerk/nextjs";
 import type { OrganizationMembershipResource } from "@clerk/types";
+import Router from 'next/router'
+
 
 // View and manage active organization members, along with any
 // pending invitations.
 // Invite new members.
-export default function Organization() {
+export default function Dashboard() {
     const {
         organization: currentOrganization,
         membership,
         isLoaded,
     } = useOrganization();
 
+    console.log('here', currentOrganization)
     if (!isLoaded || !currentOrganization) {
-        return null;
+      return Router.push('/new')
     }
 
     const isAdmin = (membership as any).role === "admin";

@@ -7,7 +7,6 @@ import {useRouter} from 'next/router';
 import {ClerkProvider, SignedIn, SignedOut, RedirectToSignIn} from '@clerk/nextjs';
 import Layout from "../components/Layout";
 import "../styles/globals.css";
-import {useUser} from "@clerk/clerk-react";
 
 
 //  List pages you want to be publicly accessible, or leave empty if
