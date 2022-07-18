@@ -21,14 +21,17 @@
     "@vespaiach/axios-fetch-adapter": "^0.3.0",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
+    "lodash-es": "^4.17.21",
     "next": "12.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-query": "^3.39.1",
+    "react-step-wizard": "^5.3.11",
     "superjson": "^1.9.1",
     "zod": "^3.17.3"
   },
   "devDependencies": {
+    "@types/lodash-es": "^4.17.6",
     "@types/node": "18.0.0",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.5",

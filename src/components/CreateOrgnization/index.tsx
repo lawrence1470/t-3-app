@@ -1,11 +1,18 @@
 import {Dialog, Transition} from '@headlessui/react'
 import {FC, Fragment, useState} from 'react'
+import StepWizard from "react-step-wizard";
+import Step1 from './Step1'
+import Step2 from './Step2'
+import Review from "./Review";
+
 
 type Props = {
     isOpen: boolean
 }
 
 const CreateOrganization: FC<Props> = ({isOpen}) => {
+
+    const [name, setName] = useState('')
 
 
     return (
@@ -37,28 +44,13 @@ const CreateOrganization: FC<Props> = ({isOpen}) => {
                             >
                                 <Dialog.Panel
                                     className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                                    <Dialog.Title
-                                        as="h3"
-                                        className="text-lg font-medium leading-6 text-gray-900"
-                                    >
-                                        Lets create a new Organization
-                                    </Dialog.Title>
-                                    <div className="mt-2">
-                                        <p className="text-sm text-gray-500">
-                                            An organization represent your real estate empire
-                                        </p>
-                                    </div>
-
-                                    <div className="mt-4 flex justify-center">
-                                        <button
-                                            type="button"
-                                            className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                                            onClick={() => undefined}
-                                        >
-                                            Lets get started!
-                                        </button>
-                                    </div>
+                                    <StepWizard>
+                                        <Step1/>
+                                        <Step2 setName={setName}/>
+                                        <Review name={name}/>
+                                    </StepWizard>
                                 </Dialog.Panel>
+
                             </Transition.Child>
                         </div>
                     </div>

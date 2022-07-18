@@ -6,7 +6,7 @@ import {getUser} from './api/user'
 import {withServerSideAuth} from "@clerk/nextjs/ssr";
 import {useOrganization} from "@clerk/nextjs";
 import {useRouter} from "next/router";
-import CreateOrganization from "../components/CreateOrganization";
+import Index from "../components/CreateOrgnization";
 
 
 const Home: NextPage = () => {
@@ -28,7 +28,7 @@ const Home: NextPage = () => {
         <>
             <div className="relative pt-6 text-2xl text-blue-500 flex justify-center items-center w-full">
                 hi
-                <CreateOrganization isOpen={true}/>
+                <Index isOpen={true}/>
                 {hello.data ? <p>{hello.data.toString()}</p> : <p>Loading..</p>}
             </div>
         </>
