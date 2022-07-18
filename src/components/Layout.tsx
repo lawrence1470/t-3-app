@@ -1,6 +1,6 @@
 import Header from './Header'
 import {FC, ReactNode, useState} from "react";
-import NarrowSideBar from "./NarrowSidebar";
+import NarrowSideBar from "./NarrowSidebar/NarrowSidebar";
 
 type Props = {
     children: ReactNode
