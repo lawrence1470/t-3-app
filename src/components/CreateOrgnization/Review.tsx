@@ -1,12 +1,10 @@
 import { Dialog } from "@headlessui/react";
 import React, { FC } from "react";
 import { StepWizardChildProps } from "react-step-wizard";
-import {capitalize} from 'lodash-es'
+import { capitalize } from "lodash-es";
 
-
-const Review: FC<Partial<StepWizardChildProps> & { name: string }> = (props) => {
-  const { name, nextStep, previousStep } = props;
-
+const Review: FC<Partial<StepWizardChildProps> & { organizationName: string; handleSubmit: () => void }> = (props) => {
+  const { organizationName, previousStep, handleSubmit } = props;
 
 
   return (
@@ -24,7 +22,7 @@ const Review: FC<Partial<StepWizardChildProps> & { name: string }> = (props) => 
       </div>
 
       <div className="mt-4 flex">
-            <h1>Organization name:</h1> <span className="font-semibold ml-2">{capitalize(name)}</span>
+        <h1>Organization name:</h1> <span className="font-semibold ml-2">{capitalize(organizationName)}</span>
       </div>
 
       <div className="mt-4 flex justify-between">
@@ -37,6 +35,7 @@ const Review: FC<Partial<StepWizardChildProps> & { name: string }> = (props) => 
           Back
         </button>
         <button
+          onClick={() => handleSubmit()}
           type="button"
           className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
         >

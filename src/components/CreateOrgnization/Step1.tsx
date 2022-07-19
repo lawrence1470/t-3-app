@@ -12,13 +12,11 @@ const Step1: FC<Partial<StepWizardChildProps>> = ({nextStep}) => {
                 as="h3"
                 className="text-lg font-medium leading-6 text-gray-900"
             >
-                Create your organization
+              {"Welcome to Igloo!"}
             </Dialog.Title>
             <div className="mt-2">
                 <p className="text-sm text-gray-500">
-                    An organization represents your real estate empire. You can create properties and invite users to
-                    your organization.
-                </p>
+                  {"First let's gather some information about yourself"}                </p>
             </div>
 
             <div className="mt-4">

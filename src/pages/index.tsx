@@ -4,31 +4,28 @@ import axios from "axios";
 import {GetServerSideProps} from 'next'
 import {getUser} from './api/user'
 import {withServerSideAuth} from "@clerk/nextjs/ssr";
-import {useOrganization} from "@clerk/nextjs";
-import {useRouter} from "next/router";
-import Index from "../components/CreateOrgnization";
+import { useOrganization, useOrganizationList } from "@clerk/nextjs";
+import CreateOrganization from "../components/CreateOrgnization";
 
 
 const Home: NextPage = () => {
-    const router = useRouter()
     const hello = trpc.useQuery(["example.getAll"]);
 
-    const {
-        organization: currentOrganization,
-        membership,
-        isLoaded,
-    } = useOrganization();
+    const { organizationList, isLoaded } = useOrganizationList();
 
 
-    if (!isLoaded || !currentOrganization) {
-        // router.push('/?hasOrg=false')
+    console.log(isLoaded, 'load',organizationList)
+
+    if (!isLoaded) {
+        return <span>loading</span>
     }
+
 
     return (
         <>
             <div className="relative pt-6 text-2xl text-blue-500 flex justify-center items-center w-full">
                 hi
-                <Index isOpen={true}/>
+                {/*<CreateOrganization isOpen={false}/>*/}
                 {hello.data ? <p>{hello.data.toString()}</p> : <p>Loading..</p>}
             </div>
         </>

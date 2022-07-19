@@ -3,13 +3,13 @@ import React, { FC } from "react";
 import { StepWizardChildProps } from "react-step-wizard";
 
 
-const Step2: FC<Partial<StepWizardChildProps> & { setName: (x: string) => void }> = (props) => {
-  const { setName, nextStep, previousStep } = props;
+const Step2: FC<Partial<StepWizardChildProps> & { setOrganizationName: (x: string) => void }> = (props) => {
+  const { setOrganizationName, nextStep, previousStep } = props;
 
   const handleName = (e: React.FormEvent<HTMLInputElement>) => {
     const { value } = e.currentTarget;
 
-    setName(value);
+    setOrganizationName(value);
   };
 
 
@@ -19,20 +19,19 @@ const Step2: FC<Partial<StepWizardChildProps> & { setName: (x: string) => void }
         as="h3"
         className="text-lg font-medium leading-6 text-gray-900"
       >
-        First set a name for your organization
+        {"What's the name of your real estate company?"}
       </Dialog.Title>
       <div className="mt-2">
         <p className="text-sm text-gray-500">
-          An organization represents your real estate empire. You can create properties and invite users to
-          your organization.
+          {"It's okay if you do not have a company! You can use any name you like here. Be creative"}
         </p>
       </div>
 
       <div className="mt-4">
         <input
           type="text"
-          className="shadow-md focus:border-black focus:border-4 block w-full sm:text-sm border-black border-1 rounded-sm h-8 px-2"
-          placeholder="Org name"
+          className="outline-none shadow-md focus:border-black focus:border-4 block w-full sm:text-sm border-black border-1 rounded-sm h-8 px-2"
+          placeholder="Enter Company name"
           onChange={handleName}
         />
       </div>
