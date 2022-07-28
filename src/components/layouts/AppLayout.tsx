@@ -1,12 +1,12 @@
-import Header from './Header'
+import Header from '../Header'
 import {FC, ReactNode, useState} from "react";
-import NarrowSideBar from "./NarrowSidebar/NarrowSidebar";
+import NarrowSideBar from "../NarrowSidebar/NarrowSidebar";
 
 type Props = {
     children: ReactNode
 }
 
-const Layout: FC<Props> = ({children}) => {
+const AppLayout: FC<Props> = ({children}) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
 
@@ -23,4 +23,4 @@ const Layout: FC<Props> = ({children}) => {
     )
 }
 
-export default Layout
+export default AppLayout

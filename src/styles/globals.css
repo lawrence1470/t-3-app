@@ -8,12 +8,15 @@
     }
 
     body {
-        @apply h-full overflow-hidden;
+        @apply h-full overflow-hidden
     }
 }
 
 
 @layer components {
+    body {
+        /*background: rgb(17,24,39);*/
+    }
     #__next {
         height: 100%;
     }

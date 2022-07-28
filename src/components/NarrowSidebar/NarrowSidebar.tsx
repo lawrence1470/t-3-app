@@ -9,7 +9,7 @@ const NarrowSideBar = () => {
     const {pathname} = useRouter()
 
     return (
-        <div className="hidden w-28 bg-polarBlack bg-hero-pattern overflow-y-auto md:block">
+        <div className="hidden w-28 bg-polarBlack bg-hero-pattern overflow-y-auto md:block rounded-tr-xl rounded-br-xl">
             <div className="w-full py-6 flex flex-col items-center">
                 <div className="flex-shrink-0 flex items-center">
                     <img
@@ -28,7 +28,7 @@ const NarrowSideBar = () => {
                         >
                             <div className={classNames(
                                 item.href === pathname ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-800 hover:text-white',
-                                'group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium'
+                                'group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium cursor-pointer'
                             )}>
                                 <item.icon
                                     className={classNames(

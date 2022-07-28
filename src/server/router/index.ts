@@ -1,4 +1,4 @@
-// src/server/router/index.ts
+// src/server/router/index.tsx
 import { createRouter } from "./context";
 import superjson from "superjson";
 
