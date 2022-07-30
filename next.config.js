@@ -1,7 +1,8 @@
 /** @type {import("next").NextConfig} */
 const nextConfig = () => {
   return {
-    reactStrictMode: true
+    reactStrictMode: true,
+    // basePath: "/dashboard"
     // async rewrites() {
     //   return [
     //     {

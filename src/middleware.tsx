@@ -24,8 +24,7 @@ export const middleware = requireAuth((request: any) => {
     Check if the user is part of an organization
   */
   if (!request.auth.claims?.orgs) {
-    console.log("here");
-    return NextResponse.redirect(new URL("/organization/create", request.url));
+    return NextResponse.redirect(new URL("/organization", request.url));
   }
 
   return NextResponse.next();
@@ -33,5 +32,5 @@ export const middleware = requireAuth((request: any) => {
 
 // Supports both a single string value or an array of matchers
 export const config = {
-  matcher: ["/abouts/:path*", "/dashboard/:path*", "/app"]
+  matcher: ["/dashboard/:path*", "/properties"]
 };

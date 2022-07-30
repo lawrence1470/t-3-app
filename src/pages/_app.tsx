@@ -16,6 +16,7 @@ import "../styles/globals.css";
 //   "/foo/bar"       for pages/foo/bar.js
 //   "/foo/[...bar]"  for pages/foo/[...bar].js
 const publicPages: string[] = [];
+const organizationPages: string[] = ["/organization"];
 
 
 const MyApp: AppType = ({ Component, pageProps }) => {
@@ -24,7 +25,9 @@ const MyApp: AppType = ({ Component, pageProps }) => {
 
   // Check if the current route matches a public page
   const isPublicPage = publicPages.includes(pathname);
-  console.log(pageProps, "page props");
+
+  const isOrganizationPage = organizationPages.includes(pathname);
+
   return (
     <ClerkProvider {...pageProps} >
       {isPublicPage ? (
@@ -32,9 +35,14 @@ const MyApp: AppType = ({ Component, pageProps }) => {
       ) : (
         <>
           <SignedIn>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
+            {
+              isOrganizationPage ?
+                <Component {...pageProps} />
+                :
+                <Layout>
+                  <Component {...pageProps} />
+                </Layout>
+            }
           </SignedIn>
           <SignedOut>
             <RedirectToSignIn />

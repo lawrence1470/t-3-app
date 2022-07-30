@@ -18,13 +18,18 @@ const OrganizationItem = () => {
   const orgOfAdmin = first(organizationList);
 
   if (typeof orgOfAdmin === "undefined") {
-    return <h1>No organization found for this user</h1>;
+    return (
+      <div className="flex items-center px-4 m-4 rounded-full bg-white">
+        <h1>No organization found for this user</h1>
+      </div>
+    );
   }
 
 
   return (
     <div className="flex items-center px-4 m-4 rounded-full bg-white">
-      {isLoaded ? <h1 className="text-black font-semibold">{capitalize(orgOfAdmin.organization.name)}</h1> : <h1>loading...</h1>}
+      {isLoaded ? <h1 className="text-black font-semibold">{capitalize(orgOfAdmin.organization.name)}</h1> :
+        <h1>loading...</h1>}
     </div>
   );
 };
