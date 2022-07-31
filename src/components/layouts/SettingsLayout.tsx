@@ -10,16 +10,17 @@ import TitleContentLayout from "./TitleContentLayout";
 
 type Props = {
   children: JSX.Element
+  isLoading?: boolean
 }
 
 
-const SettingsLayout: FC<Props> = ({ children }) => {
+const SettingsLayout: FC<Props> = ({ children, isLoading }) => {
   const router = useRouter();
   const pathNameArray = router.pathname.split("/");
   const currentTab = last(pathNameArray);
 
   return (
-    <TitleContentLayout title="Settings">
+    <TitleContentLayout title="Settings" isLoading={isLoading}>
       <div>
         <div className="sm:hidden">
           <label htmlFor="tabs" className="sr-only">

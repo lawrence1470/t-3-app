@@ -56,7 +56,6 @@ const Account: NextPage = () => {
           </Modal>
         }
       </div>
-      <div className={classNames({ "opacity-40": isLoading })}>
         <SettingsLayout>
           <div>
             <div className="space-y-1">
@@ -134,7 +133,6 @@ const Account: NextPage = () => {
             </Link>
           </div>
         </SettingsLayout>
-      </div>
     </>
   );
 };
