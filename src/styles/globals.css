@@ -10,14 +10,17 @@
     body {
         @apply h-full overflow-hidden
     }
+
+    #__next {
+        height: 100%;
+    }
 }
 
 
 @layer components {
-    body {
-        /*background: rgb(17,24,39);*/
+
+    .default_input_state {
+        @apply border-4 my-2 w-full
     }
-    #__next {
-        height: 100%;
-    }
+
 }
