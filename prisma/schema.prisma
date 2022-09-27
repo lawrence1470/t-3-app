@@ -2,22 +2,43 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
-    previewFeatures = ["referentialIntegrity"]
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
 }
 
 datasource db {
-    provider = "mysql"
-    url = env("DATABASE_URL")
-    referentialIntegrity = "prisma"
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
 }
 
 model Example {
-    id String @id @default(cuid())
-    email     String   @unique
+  id    String @id @default(cuid())
+  email String @unique
 }
 
 model Property {
-     id String @id @default(cuid())
-     nickname     String   @unique
+  id            String @id @default(cuid())
+  landlordId    String
+  streetAddress String
+  zip           String
+  city          String
+  state         String
+  nickname      String @unique
+  Unit          Unit[]
+}
+
+model Unit {
+  id         String   @id @default(cuid())
+  tenant     Tenant   @relation(fields: [tenantId], references: [id])
+  tenantId   String   @unique
+  Property   Property @relation(fields: [propertyId], references: [id])
+  propertyId String
+}
+
+model Tenant {
+  id        String @id @default(cuid())
+  firstName String
+  lastName  String
+  Unit      Unit?
 }

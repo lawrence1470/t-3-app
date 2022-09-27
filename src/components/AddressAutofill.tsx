@@ -1,18 +1,17 @@
-import { FC, useCallback } from "react";
-import { AddressAutofill as MapBoxAddressAutofill } from "@mapbox/search-js-react";
-import { AutofillRetrieveResponse } from "@mapbox/search-js-core";
-import { GeoJSON } from "geojson";
+import {FC, ReactElement, useCallback} from 'react';
+import {AddressAutofill as MapBoxAddressAutofill} from '@mapbox/search-js-react';
+import {AutofillRetrieveResponse} from '@mapbox/search-js-core';
+import {GeoJSON} from 'geojson';
+import {InputProps} from '@/common/Input';
 
 const accessToken = process.env.NEXT_PUBLIC_MAP_BOX_TOKEN;
 
-
 type Props = {
-  register: any
-  setGeoLocation: (x: GeoJSON.Feature<GeoJSON.Point>) => void
-}
+  children: ReactElement<InputProps>;
+  setGeoLocation: (x: GeoJSON.Feature<GeoJSON.Point>) => void;
+};
 
-
-const AddressAutofill: FC<Props> = ({ register, setGeoLocation }) => {
+const AddressAutofill: FC<Props> = ({children, setGeoLocation}) => {
   const handleRetrieve = useCallback(
     (res: AutofillRetrieveResponse) => {
       const geoLocation = res.features[0];
@@ -21,24 +20,17 @@ const AddressAutofill: FC<Props> = ({ register, setGeoLocation }) => {
     [setGeoLocation]
   );
 
-
   return (
     <MapBoxAddressAutofill
       accessToken={accessToken}
       popoverOptions={{
-        placement: "bottom-start",
+        placement: 'bottom-start',
         flip: false,
-        offset: 5
+        offset: 5,
       }}
       onRetrieve={handleRetrieve}
     >
-      <input
-        placeholder="Address"
-        type="text"
-        className="default_input_state"
-        autoComplete="street-address"
-        {...register("street-address")}
-      />
+      {children}
     </MapBoxAddressAutofill>
   );
 };

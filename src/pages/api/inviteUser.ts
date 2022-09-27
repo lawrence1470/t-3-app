@@ -1,10 +1,9 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
-import {prisma} from '../../server/db/client';
 import {withAuth, WithAuthProp} from '@clerk/nextjs/api';
 import {keys, head} from 'lodash-es';
-import axios, {AxiosError} from 'axios';
+import axios from 'axios';
 
-const createOrganization = withAuth(async (req: WithAuthProp<NextApiRequest>, res: NextApiResponse) => {
+const inviteUser = withAuth(async (req: WithAuthProp<NextApiRequest>, res: NextApiResponse) => {
   console.log(req.body, 'cats are cool');
   if (req.method === 'POST') {
     const organizationIds = keys(req.auth.claims?.orgs);
@@ -20,4 +19,4 @@ const createOrganization = withAuth(async (req: WithAuthProp<NextApiRequest>, re
   }
 });
 
-export default createOrganization;
+export default inviteUser;

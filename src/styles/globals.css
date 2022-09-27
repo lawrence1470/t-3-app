@@ -19,7 +19,7 @@
 
 @layer components {
 
-    .default_input_state {
+    .input_default {
         @apply border-4 my-2 w-full
     }
 

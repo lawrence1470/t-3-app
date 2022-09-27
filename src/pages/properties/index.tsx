@@ -1,6 +1,9 @@
-import { NextPage } from "next";
-import TitleContentLayout from "../../components/layouts/TitleContentLayout";
-import Link from "next/link";
+import {NextPage} from 'next';
+import TitleContentLayout from '../../components/layouts/TitleContentLayout';
+import Link from 'next/link';
+import {trpc} from '@/utils/trpc';
+import {useUser} from '@clerk/nextjs';
+import Property from '@/common/Property';
 
 const EmptyProperty = () => {
   return (
@@ -31,14 +34,22 @@ const EmptyProperty = () => {
 };
 
 const Properties: NextPage = () => {
+  const {user} = useUser();
+
+  const query = trpc.useQuery(['property.getAllByUser', {landlordId: user!.id}], {
+    enabled: typeof user?.id !== 'undefined',
+  });
 
   return (
-
-    <TitleContentLayout title="Properties">
-      <EmptyProperty />
+    <TitleContentLayout title="Properties" isLoading={query.isLoading}>
+      <div>
+        {!query.data && <EmptyProperty />}
+        <div className="grid grid-cols-3 gap-12">
+          {query.data && query.data.map(({nickname, id}) => <Property key={nickname} nickname={nickname} id={id} />)}
+        </div>
+      </div>
     </TitleContentLayout>
   );
 };
-
 
 export default Properties;

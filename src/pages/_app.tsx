@@ -7,6 +7,8 @@ import { useRouter } from "next/router";
 import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
 import Layout from "../components/layouts/AppLayout";
 import "../styles/globals.css";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 
 //  List pages you want to be publicly accessible, or leave empty if
@@ -29,27 +31,40 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   const isOrganizationPage = organizationPages.includes(pathname);
 
   return (
-    <ClerkProvider {...pageProps} >
-      {isPublicPage ? (
-        <Component {...pageProps} />
-      ) : (
-        <>
-          <SignedIn>
-            {
-              isOrganizationPage ?
-                <Component {...pageProps} />
-                :
-                <Layout>
+    <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      <ClerkProvider {...pageProps} >
+        {isPublicPage ? (
+          <Component {...pageProps} />
+        ) : (
+          <>
+            <SignedIn>
+              {
+                isOrganizationPage ?
                   <Component {...pageProps} />
-                </Layout>
-            }
-          </SignedIn>
-          <SignedOut>
-            <RedirectToSignIn />
-          </SignedOut>
-        </>
-      )}
-    </ClerkProvider>
+                  :
+                  <Layout>
+                    <Component {...pageProps} />
+                  </Layout>
+              }
+            </SignedIn>
+            <SignedOut>
+              <RedirectToSignIn />
+            </SignedOut>
+          </>
+        )}
+      </ClerkProvider>
+    </>
   );
 };
 

@@ -1,27 +1,26 @@
-import { Dialog, Transition } from "@headlessui/react";
-import React, { FC, FormEventHandler, Fragment, useCallback, useRef, useState } from "react";
-import StepWizard from "react-step-wizard";
-import Step1 from "./Step1";
-import Step2 from "./Step2";
-import Review from "./Review";
-import { useOrganizationList } from "@clerk/nextjs";
-import ReactCanvasConfetti from "react-canvas-confetti";
+import {Dialog, Transition} from '@headlessui/react';
+import React, {FC, FormEventHandler, Fragment, useCallback, useRef, useState} from 'react';
+import StepWizard from 'react-step-wizard';
+import Step1 from './Step1';
+import Step2 from './Step2';
+import Review from './Review';
+import {useOrganizationList} from '@clerk/nextjs';
+import ReactCanvasConfetti from 'react-canvas-confetti';
 
 const canvasStyles = {
-  position: "fixed",
-  pointerEvents: "none",
-  width: "100%",
-  height: "100%",
+  position: 'fixed',
+  pointerEvents: 'none',
+  width: '100%',
+  height: '100%',
   top: 0,
-  left: 0
+  left: 0,
 };
 
 type Props = {
-  isOpen: boolean
-}
+  isOpen: boolean;
+};
 
-const CreateOrganization: FC<Props> = ({ isOpen }) => {
-
+const CreateOrganization: FC<Props> = ({isOpen}) => {
   const refAnimationInstance = useRef(null);
 
   const getInstance = useCallback((instance: any) => {
@@ -30,60 +29,58 @@ const CreateOrganization: FC<Props> = ({ isOpen }) => {
 
   const makeShot = useCallback((particleRatio: number, opts: any) => {
     refAnimationInstance.current &&
-    // @ts-ignore
-    refAnimationInstance.current({
-      ...opts,
-      origin: { y: 0.7 },
-      particleCount: Math.floor(200 * particleRatio)
-    });
+      // @ts-ignore
+      refAnimationInstance.current({
+        ...opts,
+        origin: {y: 0.7},
+        particleCount: Math.floor(200 * particleRatio),
+      });
   }, []);
 
   const fire = useCallback(() => {
     makeShot(0.25, {
       spread: 26,
-      startVelocity: 55
+      startVelocity: 55,
     });
 
     makeShot(0.2, {
-      spread: 60
+      spread: 60,
     });
 
     makeShot(0.35, {
       spread: 100,
       decay: 0.91,
-      scalar: 0.8
+      scalar: 0.8,
     });
 
     makeShot(0.1, {
       spread: 120,
       startVelocity: 25,
       decay: 0.92,
-      scalar: 1.2
+      scalar: 1.2,
     });
 
     makeShot(0.1, {
       spread: 120,
-      startVelocity: 45
+      startVelocity: 45,
     });
   }, [makeShot]);
 
-
-  const { createOrganization } = useOrganizationList();
-  const [organizationName, setOrganizationName] = useState("");
+  const {createOrganization} = useOrganizationList();
+  const [organizationName, setOrganizationName] = useState('');
 
   const handleSubmit = () => {
-    if (organizationName !== "" && createOrganization) {
-      setOrganizationName("");
-      console.log("here");
+    if (organizationName !== '' && createOrganization) {
+      setOrganizationName('');
+      console.log('here');
       try {
-        createOrganization({ name: organizationName });
+        createOrganization({name: organizationName});
         fire();
       } catch (e) {
         console.error(e);
       }
     }
   };
-
 
   return (
     <>
@@ -112,15 +109,13 @@ const CreateOrganization: FC<Props> = ({ isOpen }) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel
-                  className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <StepWizard>
                     <Step1 />
                     <Step2 setOrganizationName={setOrganizationName} />
                     <Review organizationName={organizationName} handleSubmit={handleSubmit} />
                   </StepWizard>
                 </Dialog.Panel>
-
               </Transition.Child>
             </div>
           </div>
@@ -131,6 +126,5 @@ const CreateOrganization: FC<Props> = ({ isOpen }) => {
     </>
   );
 };
-
 
 export default CreateOrganization;

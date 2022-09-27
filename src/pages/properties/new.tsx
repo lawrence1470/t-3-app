@@ -1,14 +1,17 @@
-import type { NextPage } from "next";
-import { trpc } from "@/utils/trpc";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import TitleContentLayout from "../../components/layouts/TitleContentLayout";
-import { z } from "zod";
-import LoadingIndicator from "@/common/LoadingIndicator";
-import dynamic from "next/dynamic";
-import { useState } from "react";
-import { GeoJSON } from "geojson";
-
+import type {NextPage} from 'next';
+import {trpc} from '@/utils/trpc';
+import {useForm, Form} from '@/common/Form';
+import Input from '@/common/Input';
+import {zodResolver} from '@hookform/resolvers/zod';
+import TitleContentLayout from '../../components/layouts/TitleContentLayout';
+import {z} from 'zod';
+import Loader from '@/common/Loader';
+import dynamic from 'next/dynamic';
+import {useEffect, useState} from 'react';
+import {GeoJSON} from 'geojson';
+import {ToastContainer, toast} from 'react-toastify';
+import {useUser} from '@clerk/clerk-react';
+import {useRouter} from 'next/router';
 
 /*
   Mapbox causes an error when rendered with SSR
@@ -17,86 +20,108 @@ import { GeoJSON } from "geojson";
 
 const AddressAutofill = dynamic(
   () => {
-    return import("../../components/AddressAutofill");
+    return import('../../components/AddressAutofill');
   },
-  { ssr: false }
+  {ssr: false}
 );
 
 const AddressMiniMap = dynamic(
   () => {
-    return import("../../components/AddressMiniMap");
+    return import('../../components/AddressMiniMap');
   },
-  { ssr: false }
+  {ssr: false}
 );
 
 const schema = z.object({
-  nickname: z.string().min(5, { message: "Must be 5 or more characters long" })
+  nickname: z.string().min(5, {message: 'Must be 5 or more characters long'}),
+  streetAddress: z.string().min(1, {message: 'is required'}),
+  zip: z.string().min(1, {message: 'is required'}),
+  state: z.string().min(1, {message: 'is required'}),
+  city: z.string().min(1, {message: 'is required'}),
 });
 
 type Schema = z.infer<typeof schema>;
 
 const NewProperty: NextPage = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: zodResolver(schema),
-    defaultValues: {
-      nickname: ""
-    }
+  const form = useForm({
+    schema: schema,
   });
 
+  const {user} = useUser();
+  const router = useRouter();
   const [geoLocation, setGeoLocation] = useState<GeoJSON.Feature<GeoJSON.Point> | undefined>(undefined);
 
-  const mutation = trpc.useMutation(["property.create"]);
+  const mutation = trpc.useMutation(['property.create'], {
+    onSuccess: () => {
+      router.push('/properties');
+    },
+    onError: error => {
+      toast.error(error.message);
+    },
+  });
 
-  const onSubmit = (data: Schema) => {
-    mutation.mutate({ nickname: data.nickname });
+  const onSubmit = (formValues: Schema) => {
+    const landlordId = user?.id;
+
+    if (typeof landlordId !== 'string') {
+      toast.error('Error: Your profile could not be found');
+      return;
+    }
+
+    mutation.mutate({...formValues, landlordId});
   };
-
-  console.log(mutation.error, "error");
-  const isBrowser = typeof window !== "undefined";
-
-  if (!isBrowser) {
-    return <div>hello</div>;
-  }
 
   return (
     <>
-      <LoadingIndicator isLoading={mutation.isLoading} />
       <TitleContentLayout title="Create new property" isLoading={mutation.isLoading}>
         <div>
           <AddressMiniMap geoLocation={geoLocation} />
-          <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
-            <input placeholder="Nick name" type="text" className="default_input_state" {...register("nickname")} />
-            <AddressAutofill register={register} setGeoLocation={setGeoLocation} />
-            <input
+          <Form form={form} onSubmit={onSubmit}>
+            <Input
+              label="Property nickname"
               type="text"
-              className="default_input_state"
-              placeholder="City"
-              autoComplete="address-level2"
+              placeholder="Property nickname"
+              {...form.register('nickname')}
             />
-            <input
+            <AddressAutofill setGeoLocation={setGeoLocation}>
+              <Input
+                label="Address"
+                type="text"
+                placeholder="Address"
+                {...form.register('streetAddress')}
+                autoComplete="street-address"
+              />
+            </AddressAutofill>
+            <Input
+              label="State"
               type="text"
-              className="default_input_state"
-              placeholder="State / Region"
+              placeholder="State"
+              {...form.register('state')}
               autoComplete="address-level1"
             />
-            <input
+            <Input
+              label="City"
               type="text"
-              className="default_input_state"
+              placeholder="City"
+              {...form.register('city')}
+              autoComplete="address-level2"
+            />
+            <Input
+              label="ZIP / Postcode"
+              type="text"
               placeholder="ZIP / Postcode"
+              {...form.register('zip')}
               autoComplete="postal-code"
             />
-            <button className="rounded bg-green-300 p-1" type="submit">Create Property</button>
 
-
-            <p>{errors.nickname?.message}</p>
-
-          </form>
-          {mutation.error && <p>Something went wrong! {mutation.error.message}</p>}
+            <button className="rounded bg-green-300 p-1" type="submit">
+              Create Property
+            </button>
+          </Form>
         </div>
       </TitleContentLayout>
     </>
   );
 };
-
 
 export default NewProperty;

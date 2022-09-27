@@ -16,7 +16,7 @@ const AppLayout: FC<Props> = ({ children }) => {
         <NarrowSideBar />
         <div className="flex-1 flex flex-col overflow-hidden">
           <Header />
-          <main>
+          <main className="overflow-y-scroll">
             <div className="max-w-4xl mx-auto flex flex-col md:px-8 xl:px-0 relative">
               {children}
             </div>
