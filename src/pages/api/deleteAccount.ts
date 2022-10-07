@@ -3,7 +3,6 @@ import { prisma } from "../../server/db/client";
 import { withAuth, WithAuthProp } from "@clerk/nextjs/api";
 import { keys, head } from "lodash-es";
 import axios, { AxiosError } from "axios";
-import { CLERK_BASE_URL } from "../../constants";
 
 
 const deleteAccount = withAuth(async (req: WithAuthProp<NextApiRequest>, res: NextApiResponse) => {
@@ -12,7 +11,7 @@ const deleteAccount = withAuth(async (req: WithAuthProp<NextApiRequest>, res: Ne
     const currentOrganizationId = head(organizationIds);
     // try {
       console.log(currentOrganizationId, '<- current org id')
-      const deleteResponse = axios.delete(`${CLERK_BASE_URL}/organizations/${currentOrganizationId}`, {
+      const deleteResponse = axios.delete(`${process.env.NEXT_PUBLIC_CLERK_BASE_URL}/organizations/${currentOrganizationId}`, {
         headers: { "Authorization": `Bearer ${process.env.CLERK_API_KEY} ` }
       });
       console.log(new URL("/settings/account", req.url), 'url');

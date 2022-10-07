@@ -5,11 +5,13 @@ import superjson from 'superjson';
 import {exampleRouter} from './example';
 import {propertyRouter} from './Property';
 import {tenantRouter} from './Tenant';
+import {unitRouter} from './Unit';
 
 export const appRouter = createRouter()
   .transformer(superjson)
   .merge('example.', exampleRouter)
   .merge('tenant.', tenantRouter)
+  .merge('unit.', unitRouter)
   .merge('property.', propertyRouter);
 
 // export type definition of API

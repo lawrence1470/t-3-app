@@ -9,7 +9,8 @@ import Input from '@/common/Input';
 import {toast} from 'react-toastify';
 import {CreateOrganizationInvitationParams, OrganizationInvitationResource} from '@clerk/types';
 import {OrganizationMembershipRole} from '@clerk/backend-core/src/api/resources/Enums';
-import {first} from 'lodash-es';
+import {first, uniqueId} from 'lodash-es';
+import Loader from '@/common/Loader';
 
 const schema = z.object({
   emailAddress: z.string().email('Must be an email'),
@@ -18,48 +19,27 @@ const schema = z.object({
 type Schema = z.infer<typeof schema>;
 
 const Tenants: NextPage = () => {
-  const {user} = useUser();
-  const {organizationList, isLoaded} = useOrganizationList();
-  const {organization, invitationList} = useOrganization({invitationList: {}});
-
-  console.log(organization, 'organization');
-
-  const query = trpc.useQuery(['property.getAllByUser', {landlordId: user!.id}], {
-    enabled: typeof user?.id !== 'undefined',
+  const query = trpc.useQuery(['tenant.getAllInvitations'], {});
+  const form = useForm({
+    schema: schema,
   });
 
   const mutation = trpc.useMutation(['tenant.invite'], {
     onSuccess: () => {
       toast.success('an email invite was sent!');
+      query.refetch();
+      form.reset({emailAddress: ''});
     },
     onError: error => {
       toast.error(error.message);
     },
   });
 
-  const form = useForm({
-    schema: schema,
-  });
+
 
   const onSubmit = async ({emailAddress}: Schema) => {
-    const orgOfAdmin = first(organizationList);
-
-    // if () {
-    //   try {
-    //     await orgOfAdmin.organization.inviteMember({
-    //       emailAddress: emailAddress,
-    //       rol
-    //     })// inviteMember({emailAddress: emailAddress, role: 'basic_member'});
-    //   } catch (error) {
-    //     console.error(error);
-    //     toast.error('Something went wrong when inviting a user');
-    //   }
-    // }
     mutation.mutate({
       emailAddress,
-      role: 'basic_member',
-      inviterUserId: user!.id,
-      organizationId: orgOfAdmin!.organization.id,
     });
   };
 
@@ -68,40 +48,34 @@ const Tenants: NextPage = () => {
   };
 
   return (
-    <TitleContentLayout title="Tenants" isLoading={query.isLoading}>
-      <div>
-        <h1>Lets invite a user</h1>
-
+    <>
+      <TitleContentLayout title="Tenants" isLoading={query.isLoading}>
         <div>
-          <Form form={form} onSubmit={onSubmit}>
-            <Input label="Email" type="text" placeholder="Email" {...form.register('emailAddress')} />
+          <h1>Lets invite a user</h1>
 
-            <button className="rounded bg-green-300 p-1" type="submit">
-              Invite user
-            </button>
-          </Form>
-        </div>
+          <div>
+            <Form form={form} onSubmit={onSubmit}>
+              <Input type="text" placeholder="Email" {...form.register('emailAddress')} />
 
-        <div>
-          {!invitationList ? (
-            <div>
-              <h2>no users have been invited yet</h2>
-            </div>
-          ) : (
-            <div>
-              <ul>
-                {invitationList.map(i => (
-                  <li key={i.id}>
-                    {i.emailAddress}
-                    <button onClick={() => revoke(i)}>Revoke</button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+              <button className="rounded bg-green-300 p-1" type="submit">
+                Invite user
+              </button>
+            </Form>
+          </div>
+
+          <div>
+            {query.data &&
+              query.data.pendingInvitations.map(inv => (
+                <div key={uniqueId('pending-')}>
+                  <div>
+                    {inv.status}: {inv.email_address}
+                  </div>
+                </div>
+              ))}
+          </div>
         </div>
-      </div>
-    </TitleContentLayout>
+      </TitleContentLayout>
+    </>
   );
 };
 

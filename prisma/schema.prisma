@@ -25,20 +25,13 @@ model Property {
   city          String
   state         String
   nickname      String @unique
-  Unit          Unit[]
+  units         Unit[]
 }
 
 model Unit {
   id         String   @id @default(cuid())
-  tenant     Tenant   @relation(fields: [tenantId], references: [id])
-  tenantId   String   @unique
+  unitName   String
   Property   Property @relation(fields: [propertyId], references: [id])
   propertyId String
-}
-
-model Tenant {
-  id        String @id @default(cuid())
-  firstName String
-  lastName  String
-  Unit      Unit?
+  tenantId   String?
 }

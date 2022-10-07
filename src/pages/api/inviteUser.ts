@@ -8,12 +8,14 @@ const inviteUser = withAuth(async (req: WithAuthProp<NextApiRequest>, res: NextA
   if (req.method === 'POST') {
     const organizationIds = keys(req.auth.claims?.orgs);
     const currentOrganizationId = head(organizationIds);
-    // try {
-    console.log(currentOrganizationId, '<- current org id');
+
     const organizationResponse = axios.post(
-      `${process.env.NEXT_PUBLIC_CLERK_BASE_URL}/organizations/${currentOrganizationId}`,
+      `${process.env.NEXT_PUBLIC_CLERK_BASE_URL}/organizations/${currentOrganizationId}/invitations`,
       {
         headers: {Authorization: `Bearer ${process.env.CLERK_API_KEY} `},
+        body:{
+          ...req.body
+        }
       }
     );
   }

@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0ac96d69-9ebc-4b00-a007-aa8a33558353" name="Changes" comment="checkpoint: add bunch of stuff">
+      <change afterPath="$PROJECT_DIR$/src/components/Unit.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/Avatar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/Button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/helpers/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/units/[id].tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/router/Unit.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middleware.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/deleteAccount.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/deleteAccount.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/inviteUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/inviteUser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/trpc/[trpc].ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/trpc/[trpc].ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/properties/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/properties/[id].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/properties/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/properties/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tenants/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tenants/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/router/Property.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/Property.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/router/Tenant.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/Tenant.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/router/context.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/context.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/index.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2BiXH9sGM8Xvr5PFCB2GHTXfcxX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/lawrencenicastro/Desktop/t3-app/src/pages/onboarding&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/lawrencenicastro/Desktop/t3-app/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Color Scheme Font&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/lawrencenicastro/Desktop/t3-app/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/onboarding" />
+      <recent name="$PROJECT_DIR$/src/pages/welcome" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/properties" />
+      <recent name="$PROJECT_DIR$/src/pages/settings/account" />
+      <recent name="$PROJECT_DIR$/src/pages" />
+      <recent name="$PROJECT_DIR$/src/components/layouts" />
+      <recent name="$PROJECT_DIR$/src/components/default" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.dev">
+    <configuration name=".prettierrc.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/.prettierrc.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+        <item itemvalue="Node.js..prettierrc.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0ac96d69-9ebc-4b00-a007-aa8a33558353" name="Changes" comment="" />
+      <created>1657389789848</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1657389789848</updated>
+      <workItem from="1657389792985" duration="126000" />
+      <workItem from="1657390137134" duration="40269000" />
+      <workItem from="1658854856837" duration="23000" />
+      <workItem from="1658854888934" duration="22473000" />
+      <workItem from="1658964644905" duration="28691000" />
+      <workItem from="1659302892628" duration="67905000" />
+      <workItem from="1664568609256" duration="98000" />
+      <workItem from="1664568715855" duration="2306000" />
+      <workItem from="1664572250866" duration="32931000" />
+      <workItem from="1665094533370" duration="632000" />
+      <workItem from="1665095175637" duration="4074000" />
+      <workItem from="1665099267123" duration="5262000" />
+    </task>
+    <task id="LOCAL-00001" summary="project setup">
+      <created>1657393422865</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1657393422865</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add components">
+      <created>1657393438326</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1657393438326</updated>
+    </task>
+    <task id="LOCAL-00003" summary="database test">
+      <created>1657396490085</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1657396490085</updated>
+    </task>
+    <task id="LOCAL-00004" summary="prisma setup">
+      <created>1657401534321</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1657401534321</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add middleware example">
+      <created>1657481871018</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1657481871018</updated>
+    </task>
+    <task id="LOCAL-00006" summary="preparing for create org">
+      <created>1658094444440</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1658094444440</updated>
+    </task>
+    <task id="LOCAL-00007" summary="modal for creating organization">
+      <created>1658106015328</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1658106015328</updated>
+    </task>
+    <task id="LOCAL-00008" summary="change sidebar background">
+      <created>1658106603215</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1658106603215</updated>
+    </task>
+    <task id="LOCAL-00009" summary="add onboarding and tweak with middleware">
+      <created>1658208338166</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1658208338166</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add a bunch of stuff">
+      <created>1658970630506</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1658970630506</updated>
+    </task>
+    <task id="LOCAL-00011" summary="add a bunch of stuff">
+      <created>1659206928090</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1659206928090</updated>
+    </task>
+    <task id="LOCAL-00012" summary="add a bunch of stuff">
+      <created>1659305927735</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1659305927735</updated>
+    </task>
+    <task id="LOCAL-00013" summary="checkpoint: add mapbox">
+      <created>1662331519620</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1662331519620</updated>
+    </task>
+    <task id="LOCAL-00014" summary="checkpoint: add bunch of stuff">
+      <created>1664243066706</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1664243066706</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="project setup" />
+    <MESSAGE value="add components" />
+    <MESSAGE value="database test" />
+    <MESSAGE value="prisma setup" />
+    <MESSAGE value="add middleware example" />
+    <MESSAGE value="preparing for create org" />
+    <MESSAGE value="modal for creating organization" />
+    <MESSAGE value="change sidebar background" />
+    <MESSAGE value="add onboarding and tweak with middleware" />
+    <MESSAGE value="add a bunch of stuff" />
+    <MESSAGE value="checkpoint: add mapbox" />
+    <MESSAGE value="checkpoint: add bunch of stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="checkpoint: add bunch of stuff" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="js.build_tools.npm">
+        <watch expression="hasDuplicateNickNames" language="TypeScript" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

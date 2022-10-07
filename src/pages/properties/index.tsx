@@ -36,19 +36,26 @@ const EmptyProperty = () => {
 const Properties: NextPage = () => {
   const {user} = useUser();
 
-  const query = trpc.useQuery(['property.getAllByUser', {landlordId: user!.id}], {
+  const query = trpc.useQuery(['property.getAllByLandlord', {landlordId: user!.id}], {
     enabled: typeof user?.id !== 'undefined',
   });
 
+  console.log(query, 'hi');
+
   return (
-    <TitleContentLayout title="Properties" isLoading={query.isLoading}>
-      <div>
-        {!query.data && <EmptyProperty />}
-        <div className="grid grid-cols-3 gap-12">
-          {query.data && query.data.map(({nickname, id}) => <Property key={nickname} nickname={nickname} id={id} />)}
-        </div>
-      </div>
-    </TitleContentLayout>
+    <>
+      {query.data && (
+        <TitleContentLayout title="Properties" isLoading={query.isLoading}>
+          <div>
+            {!query.data.length && <EmptyProperty />}
+            <div className="grid grid-cols-3 gap-12">
+              {query.data &&
+                query.data.map(({nickname, id}) => <Property key={nickname} nickname={nickname} id={id} />)}
+            </div>
+          </div>
+        </TitleContentLayout>
+      )}
+    </>
   );
 };
 

@@ -1,9 +1,21 @@
 // src/server/router/context.ts
-import * as trpc from "@trpc/server";
-import * as trpcNext from "@trpc/server/adapters/next";
-import { prisma } from "../db/client";
+import * as trpc from '@trpc/server';
+import * as trpcNext from '@trpc/server/adapters/next';
+import {prisma} from '../db/client';
+import {NextApiRequest} from 'next';
+import {ClerkJWTClaims} from '@clerk/types';
 
-export const createContext = (opts?: trpcNext.CreateNextContextOptions) => {
+export type optsWithAuth = Omit<trpcNext.CreateNextContextOptions, 'req'> & {
+  req: NextApiRequest & {
+    auth?: {
+      sessionId: string;
+      userId: string;
+      claims: ClerkJWTClaims;
+    };
+  };
+};
+
+export const createContext = (opts?: optsWithAuth) => {
   const req = opts?.req;
   const res = opts?.res;
 

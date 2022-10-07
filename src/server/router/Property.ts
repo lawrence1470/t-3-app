@@ -24,12 +24,30 @@ export const propertyRouter = createRouter()
       return await ctx.prisma.property.create({data: {...input}});
     },
   })
-  .query('getAllByUser', {
+  .query('getAllByLandlord', {
     input: z.object({
       landlordId: z.string(),
     }),
 
     resolve({ctx, input}) {
       return ctx.prisma.property.findMany({where: {landlordId: input.landlordId}});
+    },
+  })
+  .query('getPropertyById', {
+    input: z.object({
+      propertyId: z.string(),
+    }),
+
+    async resolve({ctx, input}) {
+      const property = ctx.prisma.property.findUnique({where: {id: input.propertyId}, include: {units: true}});
+
+      if (!property) {
+        throw new trpc.TRPCError({
+          code: 'BAD_REQUEST',
+          message: `Could not find property`,
+        });
+      }
+
+      return property;
     },
   });
