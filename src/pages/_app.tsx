@@ -9,6 +9,17 @@ import Layout from '../components/layouts/AppLayout';
 import '../styles/globals.css';
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from 'react-toastify';
+import {ReactElement, ReactNode} from 'react';
+import {AppProps} from 'next/app';
+import {NextPage} from 'next';
+
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
 
 //  List pages you want to be publicly accessible, or leave empty if
 //  every page requires authentication. Use this naming strategy:
@@ -17,15 +28,14 @@ import {ToastContainer} from 'react-toastify';
 //   "/foo/bar"       for pages/foo/bar.js
 //   "/foo/[...bar]"  for pages/foo/[...bar].js
 const publicPages: string[] = [];
-const organizationPages: string[] = ['/organization'];
 
-const MyApp: AppType = ({Component, pageProps}) => {
+const MyApp: AppType = ({Component, pageProps}: AppPropsWithLayout) => {
   const {pathname, push} = useRouter();
 
   // Check if the current route matches a public page
   const isPublicPage = publicPages.includes(pathname);
 
-  const isOrganizationPage = organizationPages.includes(pathname);
+  const getLayout = Component.getLayout ?? (page => page);
 
   return (
     <>
@@ -46,13 +56,10 @@ const MyApp: AppType = ({Component, pageProps}) => {
         ) : (
           <>
             <SignedIn>
-              {isOrganizationPage ? (
-                <Component {...pageProps} />
-              ) : (
-                <Layout>
-                  <Component {...pageProps} />
-                </Layout>
-              )}
+              {/*<Layout>*/}
+              {/*  <Component {...pageProps} />*/}
+              {/*</Layout>*/}
+              {getLayout(<Component {...pageProps} />)}
             </SignedIn>
             <SignedOut>
               <RedirectToSignIn />

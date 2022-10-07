@@ -1,6 +1,5 @@
-import { UseQueryResult } from 'react-query/types/react/types';
-
-import {QueryClient, QueryClientProvider, QueryObserverSuccessResult, useQuery} from 'react-query';
+import {UseQueryResult} from 'react-query/types/react/types';
+import {QueryObserverSuccessResult} from 'react-query';
 
 export const isFetchedWithSuccess = <TData, TError = unknown>(
   query: UseQueryResult<TData, TError>

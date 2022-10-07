@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ac96d69-9ebc-4b00-a007-aa8a33558353" name="Changes" comment="checkpoint: add bunch of stuff">
+      <change afterPath="$PROJECT_DIR$/src/pages/organizations/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Loader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Loader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/TitleContentLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/TitleContentLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middleware.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/properties/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/properties/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tenants/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tenants/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/router/Tenant.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/Tenant.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/router/Unit.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/Unit.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +105,7 @@
       <workItem from="1665095175637" duration="4074000" />
       <workItem from="1665099267123" duration="5399000" />
       <workItem from="1665106136411" duration="7134000" />
+      <workItem from="1665114736667" duration="9810000" />
     </task>
     <task id="LOCAL-00001" summary="project setup">
       <created>1657393422865</created>
@@ -199,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664243066706</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="checkpoint: add bunch of stuff">
+      <created>1665114741249</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1665114741249</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

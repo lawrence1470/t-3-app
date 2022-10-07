@@ -4,6 +4,11 @@ import Link from 'next/link';
 import {trpc} from '@/utils/trpc';
 import {useUser} from '@clerk/nextjs';
 import Property from '@/common/Property';
+import {ReactElement} from 'react';
+import AppLayout from '../../components/layouts/AppLayout';
+import {NextPageWithLayout} from '../_app';
+import Loader from '@/common/Loader';
+import {isFetchedWithSuccess} from '../../helpers';
 
 const EmptyProperty = () => {
   return (
@@ -33,7 +38,7 @@ const EmptyProperty = () => {
   );
 };
 
-const Properties: NextPage = () => {
+const Properties: NextPageWithLayout = () => {
   const {user} = useUser();
 
   const query = trpc.useQuery(['property.getAllByLandlord', {landlordId: user!.id}], {
@@ -42,18 +47,24 @@ const Properties: NextPage = () => {
 
   return (
     <>
-      {query.data && (
-        <TitleContentLayout title="Properties" isLoading={query.isLoading}>
-          <div>
-            {!query.data.length && <EmptyProperty />}
-            <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
-              {query.data &&
-                query.data.map(({nickname, id}) => <Property key={nickname} nickname={nickname} id={id} />)}
-            </div>
+      <Loader isLoading={query.isLoading}>
+        <div>
+          {isFetchedWithSuccess(query) && !query.data.length && <EmptyProperty />}
+          <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
+            {isFetchedWithSuccess(query) &&
+              query.data.map(({nickname, id}) => <Property key={nickname} nickname={nickname} id={id} />)}
           </div>
-        </TitleContentLayout>
-      )}
+        </div>
+      </Loader>
     </>
+  );
+};
+
+Properties.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <AppLayout>
+      <TitleContentLayout title="Properties">{page}</TitleContentLayout>
+    </AppLayout>
   );
 };
 

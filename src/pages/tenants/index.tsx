@@ -1,16 +1,12 @@
 import {NextPage} from 'next';
-import {useOrganizationList, useUser} from '@clerk/nextjs';
 import {trpc} from '@/utils/trpc';
 import TitleContentLayout from '../../components/layouts/TitleContentLayout';
 import {useForm, Form} from '@/common/Form';
 import {z} from 'zod';
-import {useOrganization} from '@clerk/nextjs';
 import Input from '@/common/Input';
 import {toast} from 'react-toastify';
 import {OrganizationInvitationResource} from '@clerk/types';
-import {OrganizationMembershipRole} from '@clerk/backend-core/src/api/resources/Enums';
 import {first, uniqueId} from 'lodash-es';
-import Loader from '@/common/Loader';
 import Button from '@/common/Button';
 
 const schema = z.object({
@@ -52,10 +48,6 @@ const Tenants: NextPage = () => {
     });
   };
 
-  const revoke = async (invitation: OrganizationInvitationResource) => {
-    await invitation.revoke();
-  };
-
   const revokeInvite = (id: string) => {
     revokeMutation.mutate({id});
   };
@@ -64,7 +56,7 @@ const Tenants: NextPage = () => {
 
   return (
     <>
-      <TitleContentLayout title="Tenants" isLoading={query.isLoading}>
+      <TitleContentLayout title="Tenants">
         <div>
           <h1>Lets invite a user</h1>
 
@@ -81,9 +73,9 @@ const Tenants: NextPage = () => {
           <div>
             {query.data &&
               query.data.pendingInvitations.map(inv => (
-                <div key={uniqueId('pending-')}>
+                <div key={uniqueId('pending-')} className="flex items-center">
                   <div>
-                    {inv.status}: {inv.email_address}
+                    {inv.status}: {inv.emailAddress}
                   </div>
                   <Button onClick={() => revokeInvite(inv.id)} color="Error">
                     Revoke

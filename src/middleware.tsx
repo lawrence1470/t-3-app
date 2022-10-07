@@ -2,24 +2,22 @@
 // eslint-disable-next-line @next/next/no-server-import-in-page
 import {NextResponse} from 'next/server';
 import {getAuth, withClerkMiddleware} from '@clerk/nextjs/server';
+import {useClerk} from '@clerk/nextjs';
 
 export const middleware = withClerkMiddleware(request => {
-  const {sessionId, claims} = getAuth(request);
+  const {userId, claims} = getAuth(request);
 
-  if (!sessionId) {
-    const destination = request.nextUrl.href;
-    const url = request.nextUrl.clone();
-    url.pathname = '/sign-in';
-    url.searchParams.set('redirect_url', destination);
-    return NextResponse.redirect(url);
+  if (!userId) {
+    return NextResponse.redirect(new URL('/sign-in', request.url));
   }
+
 
   /*
     Check if the user is part of an organization
   */
-  // if (!claims?.orgs) {
-  //   return NextResponse.redirect(new URL('/organization', request.url));
-  // }
+  if (!claims?.org_role) {
+    return NextResponse.redirect(new URL('/organizations', request.url));
+  }
 
   return NextResponse.next();
 });
