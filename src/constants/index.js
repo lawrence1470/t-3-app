@@ -4,6 +4,7 @@ import {CreditCardIcon, OfficeBuildingIcon, UserIcon, UsersIcon} from '@heroicon
 export const SIDEBAR_NAVIGATION = [
   {name: 'Home', href: '/', icon: HomeIcon},
   {name: 'Properties', href: '/properties', icon: ViewGridIcon},
+  {name: 'Tenants', href: '/tenants', icon: UsersIcon},
   {name: 'Settings', href: '/settings/account', icon: CogIcon},
 ];
 

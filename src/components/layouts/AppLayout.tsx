@@ -1,14 +1,13 @@
-import Header from "../Header";
-import { FC, ReactNode, useState } from "react";
-import NarrowSideBar from "../NarrowSidebar/NarrowSidebar";
+import Header from '../Header';
+import {FC, ReactNode, useState} from 'react';
+import NarrowSideBar from '../NarrowSidebar/NarrowSidebar';
 
 type Props = {
-  children: ReactNode
-}
+  children: ReactNode;
+};
 
-const AppLayout: FC<Props> = ({ children }) => {
+const AppLayout: FC<Props> = ({children}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
 
   return (
     <>
@@ -17,9 +16,7 @@ const AppLayout: FC<Props> = ({ children }) => {
         <div className="flex-1 flex flex-col overflow-hidden">
           <Header />
           <main className="overflow-y-scroll">
-            <div className="max-w-4xl mx-auto flex flex-col md:px-8 xl:px-0 relative">
-              {children}
-            </div>
+            <div className="max-w-4xl mx-auto flex flex-col px-10 relative">{children}</div>
           </main>
         </div>
       </div>

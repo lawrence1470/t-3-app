@@ -77,86 +77,19 @@ export const tenantRouter = createRouter()
       return userList;
     },
   })
-  .mutation('addToUnit', {
+  .mutation('revokeInvite', {
     input: z.object({
       id: z.string(),
-      unitId: z.string(),
     }),
     async resolve({ctx, input}) {
-      const user = await clerk.users.getUser(input.id);
-
-      const unit = await ctx.prisma.unit.findUnique({where: {id: input.unitId}});
-
-      // TODO check if there are any other users with this unitID
-
-      if (!unit) {
+      try {
+        await clerk.invitations.revokeInvitation(input.id);
+      } catch (error) {
+        console.error(error);
         throw new trpc.TRPCError({
           code: 'BAD_REQUEST',
-          message: `Could not find unit`,
+          message: `Something went wrong`,
         });
       }
-
-      if (user.publicMetadata.unitId) {
-        const currentUnit = await ctx.prisma.unit.findUnique({where: {id: input.unitId}});
-
-        throw new trpc.TRPCError({
-          code: 'BAD_REQUEST',
-          message: `This user already is part of another unit, part of unit ${currentUnit!.unitName}`,
-        });
-      }
-      await clerk.users.updateUser(input.id, {
-        publicMetadata: {
-          unitId: input.unitId,
-          propertyId: unit.propertyId,
-        },
-      });
-
-      await clerk.emails.createEmail({
-        fromEmailName: 'lawrence.nicastro1@gmail.com',
-        subject: "You've been added to a unit!",
-        body: "Hello user you have been added to one of lawrence's units for testing purposes",
-        emailAddressId: user.primaryEmailAddressId!, // TODO assume there is always a email id,
-      });
-    },
-  })
-  .mutation('removeFromUnit', {
-    input: z.object({
-      id: z.string(),
-      unitId: z.string(),
-    }),
-    async resolve({ctx, input}) {
-      const user = await clerk.users.getUser(input.id);
-
-      const unit = await ctx.prisma.unit.findUnique({where: {id: input.unitId}});
-
-      if (!unit) {
-        throw new trpc.TRPCError({
-          code: 'BAD_REQUEST',
-          message: `Could not find unit`,
-        });
-      }
-
-      if (user.publicMetadata.unitId !== input.unitId) {
-        const currentUnit = await ctx.prisma.unit.findUnique({where: {id: user.publicMetadata.unitId as string}});
-
-        throw new trpc.TRPCError({
-          code: 'BAD_REQUEST',
-          message: `This user already is part of another unit, part of unit ${currentUnit!.unitName}`,
-        });
-      }
-
-      await clerk.users.updateUser(input.id, {
-        publicMetadata: {
-          unitId: input.unitId,
-          propertyId: unit.propertyId,
-        },
-      });
-
-      await clerk.emails.createEmail({
-        fromEmailName: 'lawrence.nicastro1@gmail.com',
-        subject: "You've been added to a unit!",
-        body: "Hello user you have been added to one of lawrence's units for testing purposes",
-        emailAddressId: user.primaryEmailAddressId!, // TODO assume there is always a email id,
-      });
     },
   });

@@ -2,7 +2,7 @@
 import {createNextApiHandler} from '@trpc/server/adapters/next';
 import {appRouter} from '../../../server/router';
 import {createContext} from '../../../server/router/context';
-import {ClerkExpressWithAuth, withAuth} from '@clerk/nextjs/api';
+import {withAuth} from '@clerk/nextjs/api';
 import {WithAuthProp} from '@clerk/clerk-sdk-node';
 import {NextApiRequest, NextApiResponse} from 'next';
 

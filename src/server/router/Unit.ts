@@ -65,6 +65,7 @@ export const unitRouter = createRouter()
         unit,
         tenant: tenantUser
           ? {
+              id: tenantUser.id,
               emailAddress: tenantUser.emailAddresses[0]!.emailAddress,
             }
           : null,
@@ -141,5 +142,22 @@ export const unitRouter = createRouter()
           message: `${axiosError.message}`,
         });
       }
+    },
+  })
+  .mutation('removeTenant', {
+    input: z.object({
+      unitId: z.string(),
+    }),
+    async resolve({ctx, input}) {
+      const unit = await ctx.prisma.unit.findUnique({where: {id: input.unitId}});
+
+      if (!unit) {
+        throw new trpc.TRPCError({
+          code: 'BAD_REQUEST',
+          message: `Could not find unit`,
+        });
+      }
+
+      return ctx.prisma.unit.update({where: {id: input.unitId}, data: {tenantId: null}});
     },
   });

@@ -1,13 +1,10 @@
 // TODO https://stackoverflow.com/questions/69061240/nextjs-importing-next-document-outside-of-pages-document-error
 // eslint-disable-next-line @next/next/no-server-import-in-page
 import {NextResponse} from 'next/server';
-import {requireAuth, withAuth} from '@clerk/nextjs/api';
-import e from 'express';
-import {ParamsDictionary} from 'express-serve-static-core';
-import QueryString from 'qs';
+import {getAuth, withClerkMiddleware} from '@clerk/nextjs/server';
 
-export const middleware = withAuth((request: any) => {
-  const {sessionId} = request.auth;
+export const middleware = withClerkMiddleware(request => {
+  const {sessionId, claims} = getAuth(request);
 
   if (!sessionId) {
     const destination = request.nextUrl.href;
@@ -20,9 +17,9 @@ export const middleware = withAuth((request: any) => {
   /*
     Check if the user is part of an organization
   */
-  if (!request.auth.claims?.orgs) {
-    return NextResponse.redirect(new URL('/organization', request.url));
-  }
+  // if (!claims?.orgs) {
+  //   return NextResponse.redirect(new URL('/organization', request.url));
+  // }
 
   return NextResponse.next();
 });

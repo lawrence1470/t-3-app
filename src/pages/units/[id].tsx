@@ -10,6 +10,7 @@ import {toast} from 'react-toastify';
 import {NextRouter, useRouter} from 'next/router';
 import {FC, useState} from 'react';
 import Button from '@/common/Button';
+import {mutate} from 'swr';
 
 const schema = z.object({
   query: z.string(),
@@ -25,6 +26,16 @@ const Unit: NextPage = () => {
   });
 
   const getTenants = trpc.useMutation(['tenant.findByQuery'], {});
+
+  const removeTenant = trpc.useMutation(['unit.removeTenant'], {
+    onSuccess: () => {
+      toast.success('User has been removed');
+      queryUnits.refetch();
+    },
+    onError: error => {
+      toast.error(error.message);
+    },
+  });
 
   const addUser = trpc.useMutation(['unit.addUser'], {
     onSuccess: () => {
@@ -44,7 +55,6 @@ const Unit: NextPage = () => {
     if (!router.isReady) {
       return toast.error('Request could not be submitted');
     }
-    console.log('here');
     getTenants.mutate({query: formValues.query});
   };
 
@@ -53,6 +63,10 @@ const Unit: NextPage = () => {
   const handleAddUser = (id: string) => {
     const unitId = router.query.id as string;
     addUser.mutate({tenantId: id, unitId});
+  };
+
+  const removeUser = (unitId: string) => {
+    removeTenant.mutate({unitId});
   };
 
   return (
@@ -83,7 +97,12 @@ const Unit: NextPage = () => {
             ) : (
               <div>
                 <h1>There is someone attached to this</h1>
-                <div>{queryUnits.data.tenant.emailAddress}</div>
+                <div>
+                  <h1>{queryUnits.data.tenant.emailAddress}</h1>
+                  <Button onClick={() => removeUser(queryUnits.data.unit.id)} color={'Error'}>
+                    Remove
+                  </Button>
+                </div>
               </div>
             )}
           </div>

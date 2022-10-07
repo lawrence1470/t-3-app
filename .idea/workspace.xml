@@ -5,28 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ac96d69-9ebc-4b00-a007-aa8a33558353" name="Changes" comment="checkpoint: add bunch of stuff">
-      <change afterPath="$PROJECT_DIR$/src/components/Unit.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/Avatar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/Button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/helpers/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/units/[id].tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/router/Unit.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/AppLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/AppLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/TitleContentLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/TitleContentLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/middleware.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/deleteAccount.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/deleteAccount.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/inviteUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/inviteUser.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/api/trpc/[trpc].ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/trpc/[trpc].ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/properties/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/properties/[id].tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/properties/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/properties/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/tenants/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tenants/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/router/Property.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/Property.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/units/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/units/[id].tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/router/Tenant.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/Tenant.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/router/context.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/context.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/router/Unit.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/Unit.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +105,8 @@
       <workItem from="1664572250866" duration="32931000" />
       <workItem from="1665094533370" duration="632000" />
       <workItem from="1665095175637" duration="4074000" />
-      <workItem from="1665099267123" duration="5262000" />
+      <workItem from="1665099267123" duration="5399000" />
+      <workItem from="1665106136411" duration="4558000" />
     </task>
     <task id="LOCAL-00001" summary="project setup">
       <created>1657393422865</created>

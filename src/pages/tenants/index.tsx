@@ -7,10 +7,11 @@ import {z} from 'zod';
 import {useOrganization} from '@clerk/nextjs';
 import Input from '@/common/Input';
 import {toast} from 'react-toastify';
-import {CreateOrganizationInvitationParams, OrganizationInvitationResource} from '@clerk/types';
+import {OrganizationInvitationResource} from '@clerk/types';
 import {OrganizationMembershipRole} from '@clerk/backend-core/src/api/resources/Enums';
 import {first, uniqueId} from 'lodash-es';
 import Loader from '@/common/Loader';
+import Button from '@/common/Button';
 
 const schema = z.object({
   emailAddress: z.string().email('Must be an email'),
@@ -35,7 +36,15 @@ const Tenants: NextPage = () => {
     },
   });
 
-
+  const revokeMutation = trpc.useMutation(['tenant.revokeInvite'], {
+    onSuccess: () => {
+      toast.success('user has been removed');
+      query.refetch();
+    },
+    onError: error => {
+      toast.error(error.message);
+    },
+  });
 
   const onSubmit = async ({emailAddress}: Schema) => {
     mutation.mutate({
@@ -46,6 +55,12 @@ const Tenants: NextPage = () => {
   const revoke = async (invitation: OrganizationInvitationResource) => {
     await invitation.revoke();
   };
+
+  const revokeInvite = (id: string) => {
+    revokeMutation.mutate({id});
+  };
+
+  query.data && query.data.pendingInvitations.map(inv => console.log(inv));
 
   return (
     <>
@@ -70,6 +85,9 @@ const Tenants: NextPage = () => {
                   <div>
                     {inv.status}: {inv.email_address}
                   </div>
+                  <Button onClick={() => revokeInvite(inv.id)} color="Error">
+                    Revoke
+                  </Button>
                 </div>
               ))}
           </div>
