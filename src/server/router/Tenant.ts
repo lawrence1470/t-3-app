@@ -85,7 +85,7 @@ export const tenantRouter = createRouter()
       try {
         await clerk.invitations.revokeInvitation(input.id);
       } catch (error) {
-        console.error(error);
+        console.error(error)
         throw new trpc.TRPCError({
           code: 'BAD_REQUEST',
           message: `Something went wrong`,

@@ -6,15 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0ac96d69-9ebc-4b00-a007-aa8a33558353" name="Changes" comment="checkpoint: add bunch of stuff">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layouts/AppLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/AppLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layouts/TitleContentLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/TitleContentLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middleware.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/trpc/[trpc].ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/trpc/[trpc].ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tenants/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tenants/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/units/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/units/[id].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/properties/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/properties/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/router/Tenant.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/Tenant.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/router/Unit.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/Unit.ts" afterDir="false" />
     </list>
@@ -106,7 +99,7 @@
       <workItem from="1665094533370" duration="632000" />
       <workItem from="1665095175637" duration="4074000" />
       <workItem from="1665099267123" duration="5399000" />
-      <workItem from="1665106136411" duration="4558000" />
+      <workItem from="1665106136411" duration="7134000" />
     </task>
     <task id="LOCAL-00001" summary="project setup">
       <created>1657393422865</created>

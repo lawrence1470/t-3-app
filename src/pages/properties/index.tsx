@@ -40,15 +40,13 @@ const Properties: NextPage = () => {
     enabled: typeof user?.id !== 'undefined',
   });
 
-  console.log(query, 'hi');
-
   return (
     <>
       {query.data && (
         <TitleContentLayout title="Properties" isLoading={query.isLoading}>
           <div>
             {!query.data.length && <EmptyProperty />}
-            <div className="grid grid-cols-3 gap-12">
+            <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
               {query.data &&
                 query.data.map(({nickname, id}) => <Property key={nickname} nickname={nickname} id={id} />)}
             </div>
