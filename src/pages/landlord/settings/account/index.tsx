@@ -1,7 +1,7 @@
 import {useRef, useState} from 'react';
 import {Dialog, Switch, Transition} from '@headlessui/react';
 import classNames from 'classnames';
-import SettingsLayout from '../../../components/layouts/SettingsLayout';
+import SettingsLayout from '../../../../components/layouts/SettingsLayout';
 import {NextPage} from 'next';
 import {useRouter} from 'next/router';
 import Link from 'next/link';
@@ -133,7 +133,7 @@ const Account: NextPage = () => {
                 </Switch.Group>
               </dl>
             </div>
-            <Link href="?delete=true" passHref>
+            <Link href="pages/landlord/settings/account/index?delete=true" passHref>
               <a className="bg-red-500 rounded p-2 text-white">Delete Account</a>
             </Link>
           </div>

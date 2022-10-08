@@ -1,6 +1,6 @@
 import {NextPage} from 'next';
 import {trpc} from '@/utils/trpc';
-import TitleContentLayout from '../../components/layouts/TitleContentLayout';
+import TitleContentLayout from '../../../components/layouts/TitleContentLayout';
 import {useForm, Form} from '@/common/Form';
 import {z} from 'zod';
 import Input from '@/common/Input';
@@ -8,6 +8,10 @@ import {toast} from 'react-toastify';
 import {OrganizationInvitationResource} from '@clerk/types';
 import {first, uniqueId} from 'lodash-es';
 import Button from '@/common/Button';
+import {ReactElement} from 'react';
+import AppLayout from '../../../components/layouts/AppLayout';
+import Properties from '../properties';
+import {NextPageWithLayout} from '../../_app';
 
 const schema = z.object({
   emailAddress: z.string().email('Must be an email'),
@@ -15,7 +19,7 @@ const schema = z.object({
 
 type Schema = z.infer<typeof schema>;
 
-const Tenants: NextPage = () => {
+const Tenants: NextPageWithLayout = () => {
   const query = trpc.useQuery(['tenant.getAllInvitations'], {});
   const form = useForm({
     schema: schema,
@@ -56,36 +60,41 @@ const Tenants: NextPage = () => {
 
   return (
     <>
-      <TitleContentLayout title="Tenants">
+      <div>
+        <h1>Lets invite a user</h1>
         <div>
-          <h1>Lets invite a user</h1>
+          <Form form={form} onSubmit={onSubmit}>
+            <Input type="text" placeholder="Email" {...form.register('emailAddress')} />
 
-          <div>
-            <Form form={form} onSubmit={onSubmit}>
-              <Input type="text" placeholder="Email" {...form.register('emailAddress')} />
-
-              <button className="rounded bg-green-300 p-1" type="submit">
-                Invite user
-              </button>
-            </Form>
-          </div>
-
-          <div>
-            {query.data &&
-              query.data.pendingInvitations.map(inv => (
-                <div key={uniqueId('pending-')} className="flex items-center">
-                  <div>
-                    {inv.status}: {inv.emailAddress}
-                  </div>
-                  <Button onClick={() => revokeInvite(inv.id)} color="Error">
-                    Revoke
-                  </Button>
-                </div>
-              ))}
-          </div>
+            <button className="rounded bg-green-300 p-1" type="submit">
+              Invite user
+            </button>
+          </Form>
         </div>
-      </TitleContentLayout>
+
+        <div>
+          {query.data &&
+            query.data.pendingInvitations.map(inv => (
+              <div key={uniqueId('pending-')} className="flex items-center">
+                <div>
+                  {inv.status}: {inv.emailAddress}
+                </div>
+                <Button onClick={() => revokeInvite(inv.id)} color="Error">
+                  Revoke
+                </Button>
+              </div>
+            ))}
+        </div>
+      </div>
     </>
+  );
+};
+
+Tenants.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <AppLayout>
+      <TitleContentLayout title="Tenants">{page}</TitleContentLayout>
+    </AppLayout>
   );
 };
 

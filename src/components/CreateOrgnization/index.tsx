@@ -72,7 +72,6 @@ const CreateOrganization: FC<Props> = ({isOpen}) => {
   const handleSubmit = () => {
     if (organizationName !== '' && createOrganization) {
       setOrganizationName('');
-      console.log('here');
       try {
         createOrganization({name: organizationName});
         fire();

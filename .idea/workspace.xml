@@ -5,15 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ac96d69-9ebc-4b00-a007-aa8a33558353" name="Changes" comment="checkpoint: add bunch of stuff">
-      <change afterPath="$PROJECT_DIR$/src/pages/organizations/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/landlord/dashboard/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/tenant/dashboard/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Loader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Loader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CreateOrgnization/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateOrgnization/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Unit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Unit.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Property.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Property.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/AppLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/AppLayout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/layouts/TitleContentLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/TitleContentLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/helpers/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/middleware.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/properties/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/properties/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tenants/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tenants/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/createOrganization.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/createOrganization.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/deleteAccount.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/deleteAccount.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/inviteUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/inviteUser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/trpc/[trpc].ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/trpc/[trpc].ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/properties/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/landlord/properties/[id].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/properties/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/landlord/properties/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/properties/new.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/landlord/properties/new.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/settings/account/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/landlord/settings/account/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tenants/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/landlord/tenants/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/units/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/landlord/units/[id].tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/router/Tenant.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/Tenant.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,11 +71,11 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/tenant/dashboard" />
+      <recent name="$PROJECT_DIR$/src/pages/landlord" />
       <recent name="$PROJECT_DIR$/src/pages/properties" />
       <recent name="$PROJECT_DIR$/src/pages/settings/account" />
       <recent name="$PROJECT_DIR$/src/pages" />
-      <recent name="$PROJECT_DIR$/src/components/layouts" />
-      <recent name="$PROJECT_DIR$/src/components/default" />
     </key>
   </component>
   <component name="RunManager" selected="npm.dev">
@@ -105,7 +120,8 @@
       <workItem from="1665095175637" duration="4074000" />
       <workItem from="1665099267123" duration="5399000" />
       <workItem from="1665106136411" duration="7134000" />
-      <workItem from="1665114736667" duration="9810000" />
+      <workItem from="1665114736667" duration="18346000" />
+      <workItem from="1665177756642" duration="6319000" />
     </task>
     <task id="LOCAL-00001" summary="project setup">
       <created>1657393422865</created>
@@ -212,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665114741249</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="checkpoint: add bunch of stuff">
+      <created>1665162987890</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1665162987890</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

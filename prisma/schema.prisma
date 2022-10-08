@@ -33,5 +33,5 @@ model Unit {
   unitName   String
   Property   Property @relation(fields: [propertyId], references: [id])
   propertyId String
-  tenantId   String?
+  tenantId   String?  @unique
 }

@@ -1,6 +1,4 @@
 import {FC} from 'react';
-import classNames from 'classnames';
-import Loader from '@/common/Loader';
 
 type Props = {
   children: JSX.Element;
@@ -9,7 +7,7 @@ type Props = {
 
 const TitleContentLayout: FC<Props> = ({children, title}) => {
   return (
-    <div className="">
+    <div>
       <div className="flex-1">
         <div className="">
           <div className="pt-10 pb-16">

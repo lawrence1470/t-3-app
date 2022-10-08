@@ -10,11 +10,9 @@ const deleteAccount = withAuth(async (req: WithAuthProp<NextApiRequest>, res: Ne
     const organizationIds = keys(req.auth.claims?.orgs);
     const currentOrganizationId = head(organizationIds);
     // try {
-      console.log(currentOrganizationId, '<- current org id')
       const deleteResponse = axios.delete(`${process.env.NEXT_PUBLIC_CLERK_BASE_URL}/organizations/${currentOrganizationId}`, {
         headers: { "Authorization": `Bearer ${process.env.CLERK_API_KEY} ` }
       });
-      console.log(new URL("/settings/account", req.url), 'url');
       // return NextResponse.redirect(new URL("/settings/account", req.url));
       // return res.status(200).json({ test: "test" });
     // }

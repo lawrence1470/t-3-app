@@ -4,7 +4,6 @@ import {keys, head} from 'lodash-es';
 import axios from 'axios';
 
 const inviteUser = withAuth(async (req: WithAuthProp<NextApiRequest>, res: NextApiResponse) => {
-  console.log(req.body, 'cats are cool');
   if (req.method === 'POST') {
     const organizationIds = keys(req.auth.claims?.orgs);
     const currentOrganizationId = head(organizationIds);

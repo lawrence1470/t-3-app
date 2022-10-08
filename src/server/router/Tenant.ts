@@ -19,17 +19,6 @@ export const tenantRouter = createRouter()
           emailAddress: input.emailAddress,
           // redirectUrl: 'https://optionally-redirect-here',
         });
-        // await axios.post(
-        //   `${process.env.NEXT_PUBLIC_CLERK_BASE_URL}/organizations/${currentOrganizationId}/invitations`,
-        //   {
-        //     email_address: input.emailAddress,
-        //     inviter_user_id: userId,
-        //     role: 'basic_member',
-        //   },
-        //   {
-        //     headers: {Authorization: `Bearer ${process.env.CLERK_API_KEY}`},
-        //   }
-        // );
       } catch (error) {
         const axiosError = error as AxiosError;
         const statusCode = axiosError.response?.status;
@@ -67,11 +56,21 @@ export const tenantRouter = createRouter()
       query: z.string(),
     }),
     async resolve({ctx, input}) {
-      const userList = await clerk.users.getUserList({
+      const orgId = ctx.req?.auth?.claims.org_id;
+      const userId = ctx.req?.auth?.userId;
+      //
+      // const users = await clerk.organizations.getOrganizationMembershipList({
+      //   organizationId: orgId!,
+      // });
+      //
+      // const tenants = users.filter(user => user.role !== 'admin');
+      //
+      // // TODO use query to filter tenants
+      const users = await clerk.users.getUserList({
         query: input.query,
       });
 
-      return userList;
+      return users;
     },
   })
   .mutation('revokeInvite', {
@@ -80,7 +79,7 @@ export const tenantRouter = createRouter()
     }),
     async resolve({ctx, input}) {
       try {
-        const userId = ctx.req?.auth?.userId
+        const userId = ctx.req?.auth?.userId;
         const organizationIds = keys(ctx.req?.auth?.claims.orgs);
         const currentOrganizationId = head(organizationIds);
         await clerk.organizations.revokeOrganizationInvitation({
@@ -95,5 +94,18 @@ export const tenantRouter = createRouter()
           message: `Something went wrong`,
         });
       }
+    },
+  })
+  .query('findAssociatedUnit', {
+    async resolve({ctx, input}) {
+      const userId = ctx.req?.auth?.userId;
+
+      const unit = await ctx.prisma.unit.findUnique({where: {tenantId: userId!}});
+
+      if (!unit) {
+        return {unit: null};
+      }
+
+      return {unit};
     },
   });

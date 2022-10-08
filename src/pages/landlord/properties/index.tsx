@@ -1,18 +1,18 @@
 import {NextPage} from 'next';
-import TitleContentLayout from '../../components/layouts/TitleContentLayout';
+import TitleContentLayout from '../../../components/layouts/TitleContentLayout';
 import Link from 'next/link';
 import {trpc} from '@/utils/trpc';
 import {useUser} from '@clerk/nextjs';
 import Property from '@/common/Property';
 import {ReactElement} from 'react';
-import AppLayout from '../../components/layouts/AppLayout';
-import {NextPageWithLayout} from '../_app';
+import AppLayout from '../../../components/layouts/AppLayout';
+import {NextPageWithLayout} from '../../_app';
 import Loader from '@/common/Loader';
-import {isFetchedWithSuccess} from '../../helpers';
+import {isFetchedWithSuccess} from '../../../helpers';
 
 const EmptyProperty = () => {
   return (
-    <Link href="/properties/new">
+    <Link href="/landlord/properties/new">
       <button
         type="button"
         className="relative block w-full border-2 border-gray-300 border-dashed rounded-lg p-12 text-center hover:border-gray-400"
@@ -53,6 +53,7 @@ const Properties: NextPageWithLayout = () => {
           <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
             {isFetchedWithSuccess(query) &&
               query.data.map(({nickname, id}) => <Property key={nickname} nickname={nickname} id={id} />)}
+            <EmptyProperty />
           </div>
         </div>
       </Loader>

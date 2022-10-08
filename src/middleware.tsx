@@ -2,7 +2,6 @@
 // eslint-disable-next-line @next/next/no-server-import-in-page
 import {NextResponse} from 'next/server';
 import {getAuth, withClerkMiddleware} from '@clerk/nextjs/server';
-import {useClerk} from '@clerk/nextjs';
 
 export const middleware = withClerkMiddleware(request => {
   const {userId, claims} = getAuth(request);
@@ -11,7 +10,6 @@ export const middleware = withClerkMiddleware(request => {
     return NextResponse.redirect(new URL('/sign-in', request.url));
   }
 
-
   /*
     Check if the user is part of an organization
   */
@@ -19,10 +17,19 @@ export const middleware = withClerkMiddleware(request => {
     return NextResponse.redirect(new URL('/organizations', request.url));
   }
 
+  if (request.nextUrl.pathname.startsWith('/landlord') && claims.org_role !== 'admin') {
+    return NextResponse.redirect(new URL('/tenant/dashboard', request.url));
+  }
+
+  if (request.nextUrl.pathname.startsWith('/tenant') && claims.org_role !== 'basic_member') {
+    console.log('here');
+    return NextResponse.redirect(new URL('/landlord/dashboard', request.url));
+  }
+
   return NextResponse.next();
 });
 
 // Supports both a single string value or an array of matchers
 export const config = {
-  matcher: ['/dashboard/:path*', '/properties'],
+  matcher: ['/landlord/:path*', '/tenant/:path*'],
 };

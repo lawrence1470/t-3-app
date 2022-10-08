@@ -16,7 +16,7 @@ const AppLayout: FC<Props> = ({children}) => {
         <div className="flex-1 flex flex-col overflow-hidden">
           <Header />
           <main className="overflow-y-scroll">
-            <div className="max-w-4xl mx-auto flex flex-col px-10 relative">{children}</div>
+            <div className="max-w-4xl flex flex-col px-10 relative">{children}</div>
           </main>
         </div>
       </div>

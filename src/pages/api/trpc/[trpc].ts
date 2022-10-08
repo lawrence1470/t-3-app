@@ -23,4 +23,4 @@ const handler = createNextApiHandler({
 }) as NextApiHandlerWithAuth;
 // TODO get rid of the " as nextAPI..."
 
-export default withAuth(handler as any);
+export default withAuth(handler);
