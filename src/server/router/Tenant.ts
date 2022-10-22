@@ -14,11 +14,16 @@ export const tenantRouter = createRouter()
       emailAddress: z.string(),
     }),
     async resolve({ctx, input}) {
+      const landlordId = ctx.req?.auth?.userId;
       try {
         const invitation = await clerk.invitations.createInvitation({
           emailAddress: input.emailAddress,
-          // redirectUrl: 'https://optionally-redirect-here',
+          publicMetadata: {
+            landlordId: landlordId,
+          },
+          redirectUrl: 'http://localhost:3000/tenant/dashboard',
         });
+        return invitation;
       } catch (error) {
         const axiosError = error as AxiosError;
         const statusCode = axiosError.response?.status;

@@ -4,32 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ac96d69-9ebc-4b00-a007-aa8a33558353" name="Changes" comment="checkpoint: add bunch of stuff">
-      <change afterPath="$PROJECT_DIR$/src/pages/landlord/dashboard/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/tenant/dashboard/index.tsx" afterDir="false" />
+    <list default="true" id="0ac96d69-9ebc-4b00-a007-aa8a33558353" name="Changes" comment="checkpoint: getting ready for stripe integration">
+      <change afterPath="$PROJECT_DIR$/src/pages/landlord/banking/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/router/Stripe.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CreateOrgnization/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateOrgnization/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Unit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Unit.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Property.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Property.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layouts/AppLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/AppLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layouts/TitleContentLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/TitleContentLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environment.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/environment.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middleware.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/createOrganization.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/createOrganization.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/deleteAccount.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/deleteAccount.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/inviteUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/inviteUser.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/trpc/[trpc].ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/trpc/[trpc].ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/properties/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/landlord/properties/[id].tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/properties/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/landlord/properties/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/properties/new.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/landlord/properties/new.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/settings/account/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/landlord/settings/account/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tenants/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/landlord/tenants/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/units/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/landlord/units/[id].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/landlord/dashboard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/landlord/dashboard/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/landlord/properties/new.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/landlord/properties/new.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tenant/dashboard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tenant/dashboard/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/router/Tenant.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/Tenant.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +108,7 @@
       <workItem from="1665099267123" duration="5399000" />
       <workItem from="1665106136411" duration="7134000" />
       <workItem from="1665114736667" duration="18346000" />
-      <workItem from="1665177756642" duration="6319000" />
+      <workItem from="1665177756642" duration="26194000" />
     </task>
     <task id="LOCAL-00001" summary="project setup">
       <created>1657393422865</created>
@@ -235,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665162987890</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="checkpoint: getting ready for stripe integration">
+      <created>1665252437800</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1665252437800</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,9 +259,20 @@
     <MESSAGE value="add a bunch of stuff" />
     <MESSAGE value="checkpoint: add mapbox" />
     <MESSAGE value="checkpoint: add bunch of stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="checkpoint: add bunch of stuff" />
+    <MESSAGE value="checkpoint: getting ready for stripe integration" />
+    <option name="LAST_COMMIT_MESSAGE" value="checkpoint: getting ready for stripe integration" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/server/router/Stripe.ts</url>
+          <line>35</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="js.build_tools.npm">
         <watch expression="hasDuplicateNickNames" language="TypeScript" />

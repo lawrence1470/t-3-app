@@ -56,7 +56,7 @@ const NewProperty: NextPageWithLayout = () => {
 
   const mutation = trpc.useMutation(['property.create'], {
     onSuccess: () => {
-      router.push('/properties');
+      router.push('/landlord/properties');
     },
     onError: error => {
       toast.error(error.message);

@@ -4,6 +4,10 @@ import {trpc} from '@/utils/trpc';
 import Loader from '@/common/Loader';
 import {isFetchedWithSuccess} from '../../../helpers';
 import Property from '@/common/Property';
+import { ReactElement } from "react";
+import AppLayout from "../../../components/layouts/AppLayout";
+import TitleContentLayout from "../../../components/layouts/TitleContentLayout";
+import Banking from "../banking";
 
 const Dashboard: NextPageWithLayout = () => {
   const {user} = useUser();
@@ -20,6 +24,14 @@ const Dashboard: NextPageWithLayout = () => {
         </div>
       </Loader>
     </>
+  );
+};
+
+Dashboard.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <AppLayout>
+      <TitleContentLayout title="Dashboard">{page}</TitleContentLayout>
+    </AppLayout>
   );
 };
 
